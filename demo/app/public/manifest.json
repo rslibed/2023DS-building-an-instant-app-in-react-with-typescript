@@ -1,0 +1,11 @@
+{
+  "short_name": "2023 Esri Developer Summit: Building an Instant App in React with TypeScript Demo App",
+  "name": "Demo App",
+  "icons": [
+
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
