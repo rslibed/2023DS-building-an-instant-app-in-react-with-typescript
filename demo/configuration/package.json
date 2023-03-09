@@ -1,0 +1,46 @@
+{
+  "name": "2023ds-instant-app",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@arcgis/core": "^4.26.4",
+    "@esri/calcite-components-react": "^1.0.4",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^16.7.13",
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "react-scripts": "5.0.1",
+    "sass": "^1.58.3",
+    "typescript": "^4.4.2"
+  },
+  "scripts": {
+    "start": "npm run mkdir && npm run copy && react-scripts start",
+    "mkdir": "mkdir -p public/assets",
+    "copy": "npm run copyArcGISCoreAssets && npm run copyCalciteComponentsAssets",
+    "copyArcGISCoreAssets": "cp -r node_modules/@arcgis/core/assets public/assets",
+    "copyCalciteComponentsAssets": "cp -r node_modules/@esri/calcite-components/dist/calcite/assets public/assets",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

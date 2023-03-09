@@ -1,14 +1,12 @@
-{   
-    "portalUrl": "https://arcgis.com",
-    "webmap": "ddf28dc057b8400dbfa148ef403f7c57",
-    "title": "ArcGIS Instant Apps",
-    "headerBackgroundColor": "#f8f8f8",
-    "headerTextColor": "#151515",
-    "headerLogoImage": "https://www.esri.com/content/dam/esrisites/en-us/common/icons/product-logos/arcgis-instant-apps-64.svg",
-    "panelLocation": "panel-start",
-    "socialShare": true,
-    "interactiveLegend": {
-        "zoomTo": true,
-        "featureCount": true
-    }
+{
+  "portalUrl": "https://arcgis.com",
+  "webmap": "ddf28dc057b8400dbfa148ef403f7c57",
+  "title": "ArcGIS Instant Apps",
+  "headerBackgroundColor": "#f8f8f8",
+  "headerTextColor": "#151515",
+  "headerLogoImage": "https://www.esri.com/content/dam/esrisites/en-us/common/icons/product-logos/arcgis-instant-apps-64.svg",
+  "panelLocation": "panel-start",
+  "socialShare": true,
+  "zoomTo": true,
+  "featureCount": true
 }
