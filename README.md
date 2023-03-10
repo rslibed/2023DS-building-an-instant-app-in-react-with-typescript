@@ -8,6 +8,8 @@ Where: Primrose CD
 
 Presenters: Ryan Libed, Cameron Smith, Esri
 
+[Slides](https://github.com/rslibed/2023DS-building-an-instant-app-in-react-with-typescript/blob/master/BuildingAnInstantAppinReactTS.pdf)
+
 ## To be presented at [Esri Developer Summit 2023](http://www.esri.com/events/devsummit).
 
 
