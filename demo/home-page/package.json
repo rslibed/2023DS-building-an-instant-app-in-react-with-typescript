@@ -18,10 +18,11 @@
     "typescript": "^4.4.2"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "copy": "npm run copyArcGISCoreAssets && npm run copyCalciteComponentsAssets && npm run copyInstantAppsComponentsAssets",
-    "copyArcGISCoreAssets": "ncp node_modules/@arcgis/core/assets public/assets/assets",
-    "copyCalciteComponentsAssets": "ncp node_modules/@esri/calcite-components/dist/calcite/assets public/assets/assets",
+    "start": "npm run mkdir && npm run copy && react-scripts start",
+    "mkdir": "mkdir -p public/assets",
+    "copy": "npm run copyArcGISCoreAssets && npm run copyCalciteComponentsAssets",
+    "copyArcGISCoreAssets": "cp -r node_modules/@arcgis/core/assets public/assets",
+    "copyCalciteComponentsAssets": "cp -r node_modules/@esri/calcite-components/dist/calcite/assets public/assets",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

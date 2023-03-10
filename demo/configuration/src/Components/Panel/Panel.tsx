@@ -30,23 +30,22 @@ function Panel(props: PanelProps) {
 
   const handleData = (key: string) => {
     return (e) => {
-      const isSwitch = e.type === "calciteSwitchChange";
-      let value;
-      const { target } = e;
-      if (isSwitch) {
-        value = target?.checked;
-      } else {
-        value = target?.value;
-      }
-
-      if (key === "headerTextColor" && headerTextColorPickerSwatch?.current) {
-        headerTextColorPickerSwatch.current.color = value;
-      } else if (key === "headerBackgroundColor" && headerBackgroundColorPickerSwatch?.current) {
-        headerBackgroundColorPickerSwatch.current.color = value;
-      }
-
-      const data = { type: "instant-app", [key]: value };
-      props?.appPreview?.current?.contentWindow?.postMessage(data, "*");
+      // Step 3: Post message to app
+      // const isSwitch = e.type === "calciteSwitchChange";
+      // let value;
+      // const { target } = e;
+      // if (isSwitch) {
+      //   value = target?.checked;
+      // } else {
+      //   value = target?.value;
+      // }
+      // if (key === "headerTextColor" && headerTextColorPickerSwatch?.current) {
+      //   headerTextColorPickerSwatch.current.color = value;
+      // } else if (key === "headerBackgroundColor" && headerBackgroundColorPickerSwatch?.current) {
+      //   headerBackgroundColorPickerSwatch.current.color = value;
+      // }
+      // const data = { type: "instant-app", [key]: value };
+      // props?.appPreview?.current?.contentWindow?.postMessage(data, "http://localhost:3002");
     };
   };
 
@@ -126,50 +125,51 @@ function Panel(props: PanelProps) {
     );
   };
 
-  const renderPanelLocationSettings = () => {
-    return (
-      <CalciteLabel layout="inline-space-between">
-        Panel location
-        <CalciteSegmentedControl onCalciteSegmentedControlChange={handleData("panelLocation")}>
-          <CalciteSegmentedControlItem value="panel-start" checked>
-            Start
-          </CalciteSegmentedControlItem>
-          <CalciteSegmentedControlItem value="panel-end">End</CalciteSegmentedControlItem>
-        </CalciteSegmentedControl>
-      </CalciteLabel>
-    );
-  };
+  // Step 2: Render out each setting
+  // const renderPanelLocationSettings = () => {
+  //   return (
+  //     <CalciteLabel layout="inline-space-between">
+  //       Panel location
+  //       <CalciteSegmentedControl onCalciteSegmentedControlChange={handleData("panelLocation")}>
+  //         <CalciteSegmentedControlItem value="panel-start" checked>
+  //           Start
+  //         </CalciteSegmentedControlItem>
+  //         <CalciteSegmentedControlItem value="panel-end">End</CalciteSegmentedControlItem>
+  //       </CalciteSegmentedControl>
+  //     </CalciteLabel>
+  //   );
+  // };
 
-  const renderZoomToSetting = () => {
-    return (
-      <CalciteLabel layout="inline-space-between">
-        Zoom to
-        <CalciteSwitch checked onCalciteSwitchChange={handleData("zoomTo")} />
-      </CalciteLabel>
-    );
-  };
+  // const renderZoomToSetting = () => {
+  //   return (
+  //     <CalciteLabel layout="inline-space-between">
+  //       Zoom to
+  //       <CalciteSwitch checked onCalciteSwitchChange={handleData("zoomTo")} />
+  //     </CalciteLabel>
+  //   );
+  // };
 
-  const renderFeatureCountSetting = () => {
-    return (
-      <CalciteLabel layout="inline-space-between">
-        Feature count
-        <CalciteSwitch checked onCalciteSwitchChange={handleData("featureCount")} />
-      </CalciteLabel>
-    );
-  };
+  // const renderFeatureCountSetting = () => {
+  //   return (
+  //     <CalciteLabel layout="inline-space-between">
+  //       Feature count
+  //       <CalciteSwitch checked onCalciteSwitchChange={handleData("featureCount")} />
+  //     </CalciteLabel>
+  //   );
+  // };
 
-  const renderInteractiveLegendSettingsGroup = () => {
-    return (
-      <div className="settings-group">
-        <span className="section-header">Interactive legend</span>
-        <div className="settings-group-content">
-          {renderPanelLocationSettings()}
-          {renderZoomToSetting()}
-          {renderFeatureCountSetting()}
-        </div>
-      </div>
-    );
-  };
+  // const renderInteractiveLegendSettingsGroup = () => {
+  //   return (
+  //     <div className="settings-group">
+  //       <span className="section-header">Interactive legend</span>
+  //       <div className="settings-group-content">
+  //         {renderPanelLocationSettings()}
+  //         {renderZoomToSetting()}
+  //         {renderFeatureCountSetting()}
+  //       </div>
+  //     </div>
+  //   );
+  // };
 
   const renderHeaderSettingsGroup = () => {
     return (
@@ -190,7 +190,8 @@ function Panel(props: PanelProps) {
     return (
       <div id="settingsPanel">
         {renderHeaderSettingsGroup()}
-        {renderInteractiveLegendSettingsGroup()}
+        {/* Step 1: Render out form inputs */}
+        {/* {renderInteractiveLegendSettingsGroup()} */}
       </div>
     );
   };

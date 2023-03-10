@@ -1,5 +1,5 @@
-{   
-"appid": "",    
-"portalUrl": "https://arcgis.com"
-   
+{
+  "appid": "",
+  "portalUrl": "https://arcgis.com",
+  "assetsDir": "./assets/assets"
 }

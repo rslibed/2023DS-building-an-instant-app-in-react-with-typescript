@@ -13,7 +13,7 @@ function App() {
         <h1>2023 Developer Summit: Build an Instant App in React with TypeScript</h1>
       </header>
       <Panel key="config-panel" appPreview={iframeContainer} />
-      <iframe key="app-preview" ref={iframeContainer} src="http://localhost:3001" />
+      <iframe key="app-preview" ref={iframeContainer} src="http://localhost:3002" />
     </CalciteShell>
   );
 }

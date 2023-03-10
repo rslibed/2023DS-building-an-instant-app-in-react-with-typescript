@@ -33,6 +33,7 @@ function App() {
 
   const [view, setView] = useState<MapView | null>(null);
 
+  // Step 4: State management
   const [currentTitle, setCurrentTitle] = useState(title);
   const [currentPanelLocation, setCurrentPanelLocation] = useState(panelLocation);
   const [currentFeatureCount, setCurrentFeatureCount] = useState(featureCount);
@@ -43,49 +44,45 @@ function App() {
   const [currentHeaderLogoImage, setCurrentHeaderLogoImage] = useState(headerLogoImage);
   const [currentSocialShare, setCurrentSocialShare] = useState(socialShare);
 
-  useEffect(() => {
-    window.addEventListener("message", (e) => {
-      if (e?.data?.type === "instant-app") {
-        delete e.data.type;
+  // Step 5: Listener
+  // Message event listener
+  // useEffect(() => {
+  //   window.addEventListener("message", (e) => {
+  //     if (e?.data?.type === "instant-app") {
+  //       delete e.data.type;
 
-        const key = Object.keys(e.data)[0];
-        const value = e.data[key];
+  //       const key = Object.keys(e.data)[0];
+  //       const value = e.data[key];
 
-        switch (key) {
-          case "title":
-            setCurrentTitle(value);
-            return;
-          case "panelLocation":
-            setCurrentPanelLocation(value);
-            return;
-          case "featureCount":
-            setCurrentFeatureCount(value);
-            return;
-          case "zoomTo":
-            setCurrentZoomTo(value);
-            return;
-          case "socialShare":
-            setCurrentSocialShare(value);
-            return;
-          case "headerTextColor":
-            setCurrentHeaderTextColor(value);
-            return;
-          case "headerBackgroundColor":
-            setCurrentHeaderBackgroundColor(value);
-            return;
-          case "headerLogoImage":
-            setCurrentHeaderLogoImage(value);
-            return;
-        }
-
-        if (key === "title") {
-          setCurrentTitle(e.data[key]);
-        } else if (key === "panelLocation") {
-          setCurrentPanelLocation(e.data[key]);
-        }
-      }
-    });
-  }, []);
+  //       switch (key) {
+  //         case "title":
+  //           setCurrentTitle(value);
+  //           return;
+  //         case "panelLocation":
+  //           setCurrentPanelLocation(value);
+  //           return;
+  //         case "featureCount":
+  //           setCurrentFeatureCount(value);
+  //           return;
+  //         case "zoomTo":
+  //           setCurrentZoomTo(value);
+  //           return;
+  //         case "socialShare":
+  //           setCurrentSocialShare(value);
+  //           return;
+  //         case "headerTextColor":
+  //           setCurrentHeaderTextColor(value);
+  //           return;
+  //         case "headerBackgroundColor":
+  //           setCurrentHeaderBackgroundColor(value);
+  //           return;
+  //         case "headerLogoImage":
+  //           setCurrentHeaderLogoImage(value);
+  //           return;
+  //       }
+  //     }
+  //   });
+  // }, []);
 
   useEffect(() => {
     const map = new WebMap({
@@ -101,10 +98,11 @@ function App() {
   }, []);
 
   useEffect(() => {
-    if (view && iacIntLegendRef?.current) {
-      iacIntLegendRef.current.zoomTo = currentZoomTo;
-      iacIntLegendRef.current.featureCount = currentFeatureCount;
-      iacIntLegendRef.current.view = view as MapView;
+    const intLegendNode = iacIntLegendRef?.current;
+    if (view && intLegendNode) {
+      intLegendNode.zoomTo = currentZoomTo;
+      intLegendNode.featureCount = currentFeatureCount;
+      intLegendNode.view = view as MapView;
     }
   }, [view, iacIntLegendRef, currentZoomTo, currentFeatureCount]);
 
@@ -114,8 +112,8 @@ function App() {
     }
   }, [view, socialShareRef?.current]);
 
-  return (
-    <CalciteShell>
+  const renderHeader = () => {
+    return (
       <instant-apps-header
         slot="header"
         title-text={currentTitle}
@@ -127,12 +125,26 @@ function App() {
           <instant-apps-social-share ref={socialShareRef} slot="actions-end" />
         ) : null}
       </instant-apps-header>
+    );
+  };
+
+  const renderPanel = () => {
+    return (
       <CalciteShellPanel slot={currentPanelLocation}>
         <CalcitePanel>
           <instant-apps-interactive-legend ref={iacIntLegendRef} />
         </CalcitePanel>
       </CalciteShellPanel>
-      <View viewContainerRef={viewContainerRef} />
+    );
+  };
+
+  const renderView = () => <View viewContainerRef={viewContainerRef} />;
+
+  return (
+    <CalciteShell>
+      {renderHeader()}
+      {renderPanel()}
+      {renderView()}
     </CalciteShell>
   );
 }
